@@ -11,7 +11,7 @@ use single_threaded_server::ThreadPool;
 fn main() -> std::io::Result<()> {
     let listner = TcpListener::bind("127.0.0.1:7676")?;
     let pool = ThreadPool::new(4);
-    for stream in listner.incoming().take(2) {
+    for stream in listner.incoming() {
         pool.execute(|| handle_client(stream.expect("read stream")).expect("not handling client"));
     }
 

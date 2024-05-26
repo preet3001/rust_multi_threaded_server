@@ -28,7 +28,8 @@ impl Worker {
                     job();
                 }
                 Err(_) => {
-                    println!("closing worker{id}")
+                    println!("closing worker{id}");
+                    break;
                 }
             }
         });
